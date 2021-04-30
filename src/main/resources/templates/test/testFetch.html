@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>order</h1>
+<button class="orderBtn">order</button>
+</body>
+<script>
+
+    const data = {sno:1, menu: "치돈", price: 9000, qty: 1}
+    document.querySelector(".orderBtn").addEventListener("click", function (e) {
+        e.preventDefault()
+        fetch("http://localhost:8080/getOrder", {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        }).then(res => res.text()).then(result => console.log(result))
+    }, false)
+
+
+</script>
+</html>
